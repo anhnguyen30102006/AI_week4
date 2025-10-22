@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import sklearn
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
 
 #TASK 2a
 
@@ -32,5 +35,44 @@ print(data.isnull().sum())
 print("\nDescriptive Statistics:")
 print(data.describe())
 
+# 1. Define Features (Independent Variables - X)
+# X includes all the columns you use to make the prediction: TV, Radio, Newspaper.
+X = data[['TV', 'Radio', 'Newspaper']]
+
+# 2. Define Target (Dependent Variable - Y)
+# Y is the column you are trying to predict: Sales.
+Y = data['Sales']
+
+print(f"X (Features) columns: {X.columns.tolist()}")
+print(f"Y (Target) defined.")
+
+#-----------------------------------------------------
+
+#TASK 2b
+
+#!!!Split the data (e.g., 80% for training, 20% for testing)
+X_train, X_test, Y_train, Y_test = train_test_split(
+    X,           # All features
+    Y,           # All target values (Sales)
+    test_size=0.2, # 20% for testing
+    random_state=42 # Ensures the split is the same every time for reproducibility
+)
+
+print(f"Training set size: {X_train.shape[0]} samples") # Should be 160 if total is 200
+print(f"Testing set size: {X_test.shape[0]} samples")   # Should be 40 if total is 200
+
+#!!!Initializing the Model
+# Create an instance (an object) of the Linear Regression model
+model = LinearRegression()
+print("Linear Regression model initialized successfully!)
+
+#---------------------------------------------------------
+
+#TASK 2c
+
+
+#---------------------------------------------------------
+
+#TASK 2d
 
 
