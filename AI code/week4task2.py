@@ -28,4 +28,9 @@ print("\n2. Data Cleaning and Statistics")
 print("Missing Values per Column:")
 print(data.isnull().sum())
 
+# Descriptive Statistics
+print("\nDescriptive Statistics:")
+print(data.describe())
+
+
 
