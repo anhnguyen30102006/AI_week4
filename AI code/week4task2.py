@@ -5,6 +5,7 @@ import seaborn as sns
 import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
 
 #TASK 2a
@@ -69,10 +70,25 @@ print("Linear Regression model initialized successfully!)
 #---------------------------------------------------------
 
 #TASK 2c
-
+#!!!Train the model 
+model.fit(X_train, Y_train)
+print("Model training complete!")
+      
 
 #---------------------------------------------------------
 
 #TASK 2d
+#1. TESTING
+#Use the trained model to predict Sales values for the test data
+Y_pred = model.predict(X_test)
 
+#2. EVALUATING
+# Calculate the metrics
+mse = mean_squared_error(Y_test, Y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(Y_test, Y_pred)
+
+print(f"Mean Squared Error (MSE): {mse:.4f}")
+print(f"Root Mean Squared Error (RMSE): {rmse:.4f}")
+print(f"R-squared Score (R²): {r2:.4f}")
 
